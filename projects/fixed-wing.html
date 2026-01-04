@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fixed-Wing Pitch Control System | Fawwaz Hameed</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#2563eb',
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body class="bg-white text-gray-900">
+
+  <!-- NAVBAR -->
+  <nav class="max-w-5xl mx-auto px-4 py-6 flex justify-between items-center">
+    <a href="/" class="font-semibold text-lg">
+      Fawwaz Hameed
+    </a>
+    <div class="space-x-6 text-sm">
+      <a href="/projects.html" class="nav-link font-medium">Projects</a>
+      <a href="/resume.html" class="nav-link">Resume</a>
+      <a href="/about.html" class="nav-link">About</a>
+      <a href="https://github.com/YOUR_GITHUB" target="_blank" class="nav-link">
+        GitHub
+      </a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-3xl mx-auto px-4 py-20">
+
+    <!-- TITLE -->
+    <section class="mb-12">
+      <h1 class="text-2xl font-semibold mb-3">
+        Fixed-Wing Pitch Control System (SITL)
+      </h1>
+      <p class="text-gray-600 text-lg">
+        Design, implementation, and validation of a cascaded pitch control
+        system for a fixed-wing UAV using software-in-the-loop simulation.
+      </p>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="mb-14">
+      <h2 class="section-title">Overview</h2>
+      <p class="text-gray-700 leading-relaxed">
+        This project focused on the development of a longitudinal pitch control
+        system for a fixed-wing unmanned aerial vehicle. The objective was to
+        achieve stable and responsive pitch angle tracking while respecting
+        actuator limits and maintaining robustness to modeling uncertainty.
+      </p>
+      <p class="text-gray-700 leading-relaxed mt-4">
+        All development and testing were performed in a software-in-the-loop
+        (SITL) environment, enabling rapid iteration, repeatability, and safe
+        validation prior to any hardware deployment.
+      </p>
+    </section>
+
+    <!-- SYSTEM ARCHITECTURE -->
+    <section class="mb-14">
+      <h2 class="section-title">System Architecture</h2>
+
+      <p class="text-gray-700 leading-relaxed mb-4">
+        A cascaded control architecture was selected, consisting of an outer-loop
+        pitch angle controller and an inner-loop pitch rate controller. This
+        structure allows the inner loop to handle fast dynamics while the outer
+        loop regulates slower attitude behavior.
+      </p>
+
+      <!-- Diagram placeholder -->
+      <div class="my-6 border rounded p-4 text-sm text-gray-500">
+        Block diagram of cascaded pitch angle and pitch rate control loop
+        (to be added).
+      </div>
+
+      <ul class="list-disc ml-5 text-gray-700">
+        <li>Outer loop: pitch angle control</li>
+        <li>Inner loop: pitch rate control</li>
+        <li>Actuator: elevator deflection</li>
+        <li>Feedback: attitude and rate estimates</li>
+      </ul>
+    </section>
+
+    <!-- CONTROL DESIGN -->
+    <section class="mb-14">
+      <h2 class="section-title">Control Design</h2>
+
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Both the pitch angle and pitch rate controllers were implemented using
+        PID control laws. The inner-loop rate controller was tuned first to
+        achieve a fast, well-damped response, after which the outer-loop angle
+        controller was tuned around the closed inner loop.
+      </p>
+
+      <ul class="list-disc ml-5 text-gray-700 mb-4">
+        <li>Cascaded PID structure</li>
+        <li>Inner-loop bandwidth significantly higher than outer loop</li>
+        <li>Anti-windup to handle actuator saturation</li>
+      </ul>
+
+      <p class="text-gray-700 leading-relaxed">
+        Controller gains were tuned iteratively in simulation using step
+        responses and disturbance rejection tests, with emphasis on stability
+        margins and smooth actuator behavior.
+      </p>
+    </section>
+
+    <!-- SIMULATION ENVIRONMENT -->
+    <section class="mb-14">
+      <h2 class="section-title">Simulation Environment</h2>
+
+      <p class="text-gray-700 leading-relaxed mb-4">
+        The control system was evaluated in a software-in-the-loop environment
+        that simulated vehicle dynamics, sensor feedback, and actuator response.
+        This setup enabled repeatable testing across a range of flight
+        conditions.
+      </p>
+
+      <ul class="list-disc ml-5 text-gray-700">
+        <li>Fixed-wing longitudinal dynamics model</li>
+        <li>Simulated sensor noise and delays</li>
+        <li>Real-time control loop execution</li>
+      </ul>
+    </section>
+
+    <!-- VALIDATION -->
+    <section class="mb-14">
+      <h2 class="section-title">Validation & Results</h2>
+
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Validation focused on pitch angle tracking performance, transient
+        response, and robustness to disturbances. Step inputs and reference
+        changes were used to evaluate settling time, overshoot, and steady-state
+        error.
+      </p>
+
+      <ul class="list-disc ml-5 text-gray-700">
+        <li>Stable pitch tracking across commanded setpoints</li>
+        <li>Acceptable rise time and minimal overshoot</li>
+        <li>Controlled actuator activity within limits</li>
+      </ul>
+
+      <!-- Plot placeholder -->
+      <div class="my-6 border rounded p-4 text-sm text-gray-500">
+        Pitch angle and pitch rate response plots (to be added).
+      </div>
+    </section>
+
+    <!-- TRADEOFFS -->
+    <section class="mb-14">
+      <h2 class="section-title">Engineering Tradeoffs</h2>
+
+      <p class="text-gray-700 leading-relaxed">
+        Key tradeoffs included balancing responsiveness against actuator
+        saturation, as well as selecting controller gains that remained robust
+        under modeling uncertainty. A more aggressive tuning improved tracking
+        performance but increased sensitivity to noise and saturation effects.
+      </p>
+    </section>
+
+    <!-- LESSONS LEARNED -->
+    <section>
+      <h2 class="section-title">Lessons Learned</h2>
+
+      <ul class="list-disc ml-5 text-gray-700">
+        <li>Cascaded architectures simplify tuning and improve robustness</li>
+        <li>Inner-loop performance strongly constrains outer-loop behavior</li>
+        <li>SITL enables safe, rapid iteration before hardware testing</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t mt-20">
+    <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-gray-500">
+      © 2026 Fawwaz Hameed
+    </div>
+  </footer>
+
+</body>
+</html>
+

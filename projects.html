@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | Fawwaz Hameed</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#2563eb',
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body class="bg-white text-gray-900">
+
+  <!-- NAVBAR -->
+  <nav class="max-w-5xl mx-auto px-4 py-6 flex justify-between items-center">
+    <a href="/" class="font-semibold text-lg">
+      Fawwaz Hameed
+    </a>
+    <div class="space-x-6 text-sm">
+      <a href="/projects.html" class="nav-link font-medium">
+        Projects
+      </a>
+      <a href="/resume.html" class="nav-link">Resume</a>
+      <a href="/about.html" class="nav-link">About</a>
+      <a href="https://github.com/YOUR_GITHUB" target="_blank" class="nav-link">
+        GitHub
+      </a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-3xl mx-auto px-4 py-20">
+
+    <!-- HEADER -->
+    <section class="mb-16">
+      <h1 class="text-2xl font-semibold mb-4">
+        Projects
+      </h1>
+      <p class="text-gray-700 text-lg">
+        A selection of projects focused on robotics, controls, simulation,
+        and embedded systems. Each project emphasizes system architecture,
+        design decisions, and validation.
+      </p>
+    </section>
+
+    <!-- PROJECT LIST -->
+    <section class="space-y-14">
+
+      <!-- PROJECT 1 -->
+      <div>
+        <h2 class="project-title">
+          Fixed-Wing Pitch Controller (SITL)
+        </h2>
+        <p class="project-description">
+          Designed and tuned a cascaded pitch angle / pitch rate controller
+          for a fixed-wing UAV using software-in-the-loop simulation.
+        </p>
+        <ul class="list-disc ml-5 text-gray-600 text-sm mb-2">
+          <li>Cascaded PID architecture</li>
+          <li>Inner-loop rate control</li>
+          <li>Simulation-based validation</li>
+        </ul>
+        <a href="/projects/fixed-wing.html" class="project-link">
+          View project →
+        </a>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div>
+        <h2 class="project-title">
+          VTOL Airframe Design & Analysis
+        </h2>
+        <p class="project-description">
+          Conceptual and preliminary airframe design for a small VTOL UAV,
+          including airfoil selection, sizing, and structural considerations.
+        </p>
+        <ul class="list-disc ml-5 text-gray-600 text-sm mb-2">
+          <li>Airfoil trade studies</li>
+          <li>Performance constraints</li>
+          <li>Design iteration under mass limits</li>
+        </ul>
+        <a href="/projects/vtol-airframe.html" class="project-link">
+          View project →
+        </a>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div>
+        <h2 class="project-title">
+          Embedded Autopilot & ESP32 Systems
+        </h2>
+        <p class="project-description">
+          Embedded C++ development on ESP32 platforms, including real-time
+          communication, peripheral integration, and system-level debugging.
+        </p>
+        <ul class="list-disc ml-5 text-gray-600 text-sm mb-2">
+          <li>ESP-IDF & C++</li>
+          <li>Real-time constraints</li>
+          <li>Hardware–software integration</li>
+        </ul>
+        <a href="/projects/embedded-autopilot.html" class="project-link">
+          View project →
+        </a>
+      </div>
+
+      <!-- PROJECT 4 -->
+      <div>
+        <h2 class="project-title">
+          Lidar-Based Perception & Simulation
+        </h2>
+        <p class="project-description">
+          Simulation and integration of 2D lidar sensors in Gazebo for robotic
+          perception and navigation experiments.
+        </p>
+        <ul class="list-disc ml-5 text-gray-600 text-sm mb-2">
+          <li>Gazebo simulation</li>
+          <li>Sensor modeling</li>
+          <li>Data visualization & debugging</li>
+        </ul>
+        <a href="/projects/lidar-perception.html" class="project-link">
+          View project →
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t mt-20">
+    <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-gray-500">
+      © 2026 Fawwaz Hameed
+    </div>
+  </footer>
+
+</body>
+</html>
+

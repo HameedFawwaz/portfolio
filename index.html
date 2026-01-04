@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fawwaz Hameed | Robotics & Controls</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#2563eb', /* subtle engineering blue */
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body class="bg-white text-gray-900">
+
+  <!-- NAVBAR -->
+  <nav class="max-w-5xl mx-auto px-4 py-6 flex justify-between items-center">
+    <a href="/" class="font-semibold text-lg">
+      Fawwaz Hameed
+    </a>
+    <div class="space-x-6 text-sm">
+      <a href="/projects.html" class="nav-link">Projects</a>
+      <a href="/resume.html" class="nav-link">Resume</a>
+      <a href="/about.html" class="nav-link">About</a>
+      <a href="https://github.com/YOUR_GITHUB" target="_blank" class="nav-link">
+        GitHub
+      </a>
+    </div>
+  </nav>
+   
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-3xl mx-auto px-4 py-20">
+
+<!-- HERO -->
+<section class="mb-20">
+  <div class="grid grid-cols-1 md:grid-cols-3 items-center">
+
+    <!-- TEXT -->
+    <div class="md:col-span-2">
+      <h1 class="text-3xl font-semibold leading-tight mb-4">
+        Third Year Mechanical Engineering Co-op @<br />
+        University of Alberta <br />
+        <span class="text-accent">Robotics & Controls</span>
+      </h1>
+
+      <p class="text-gray-700 text-lg mb-6">
+        I design, simulate, and test control systems for aerial and robotic platforms.
+        My experience spans software-in-the-loop simulation, embedded systems,
+        and airframe design.
+      </p>
+
+      <div class="flex space-x-6 text-sm">
+        <a href="/projects.html" class="primary-button">
+          View Projects
+        </a>
+        <a href="/assets/pdf/Fawwaz_Hameed_Resume.pdf"
+           target="_blank"
+           class="secondary-button">
+          Resume (PDF)
+        </a>
+      </div>
+    </div>
+
+    <!-- PHOTO -->
+    <div class="flex justify-center md:justify-end">
+      <img
+        src="/assets/images/profile.webp"
+        alt="Photo of Fawwaz Hameed"
+        class="w-48 h-48 rounded-full object-cover border"
+      />
+    </div>
+
+  </div>
+</section>
+
+    <!-- HIGHLIGHTED PROJECTS -->
+    <section class="mb-20">
+      <h2 class="section-title">Selected Projects</h2>
+
+      <div class="space-y-10">
+
+        <div>
+          <h3 class="project-title">
+            Fixed-Wing Pitch Controller
+          </h3>
+          <p class="project-description">
+            Designed and tuned a cascaded pitch angle / pitch rate controller for a
+            fixed-wing UAV in C++.
+          </p>
+          <a href="/projects/fixed-wing.html" class="project-link">
+            View project →
+          </a>
+        </div>
+
+        <div>
+          <h3 class="project-title">
+            VTOL Airframe Design & Analysis
+          </h3>
+          <p class="project-description">
+            Airframe sizing, airfoil selection, and structural considerations for a
+            small VTOL UAV under real-world constraints.
+          </p>
+          <a href="/projects/vtol-airframe.html" class="project-link">
+            View project →
+          </a>
+        </div>
+
+        <div>
+          <h3 class="project-title">
+            Embedded Systems & Autopilot Development
+          </h3>
+          <p class="project-description">
+            Embedded C++ development on ESP32 platforms and autopilot integration
+            with real-time communication and control logic.
+          </p>
+          <a href="/projects/embedded-autopilot.html" class="project-link">
+            View project →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AFFILIATIONS -->
+    <section>
+      <h2 class="section-title">Affiliations</h2>
+      <p class="text-gray-700">
+        University of Alberta Aerial Robotics Group (UAARG) —
+        Airframe & Autopilot Subteams
+      </p>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t mt-20">
+    <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-gray-500">
+      © 2026 Fawwaz Hameed
+    </div>
+  </footer>
+
+</body>
+</html>
+
