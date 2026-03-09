@@ -38,7 +38,7 @@
       </a>
       <a href="/resume.html" class="nav-link">Resume</a>
       <a href="/about.html" class="nav-link">About</a>
-      <a href="https://github.com/YOUR_GITHUB" target="_blank" class="nav-link">
+      <a href="https://github.com/HameedFawwaz" target="_blank" class="nav-link">
         GitHub
       </a>
     </div>
@@ -53,8 +53,7 @@
         Projects
       </h1>
       <p class="text-gray-700 text-lg">
-        A selection of projects focused on robotics, controls, simulation,
-        and embedded systems. Each project emphasizes system architecture,
+        A selection of projects focused on drones, controls, and mechanical design. Each project emphasizes system architecture,
         design decisions, and validation.
       </p>
     </section>
@@ -65,18 +64,17 @@
       <!-- PROJECT 1 -->
       <div>
         <h2 class="project-title">
-          Fixed-Wing Pitch Controller (SITL)
+          Stallion VTOL Drone
         </h2>
         <p class="project-description">
-          Designed and tuned a cascaded pitch angle / pitch rate controller
-          for a fixed-wing UAV using software-in-the-loop simulation.
+          End-to-end design, build, tuning, and flight testing of a custom VTOL drone airframe.
         </p>
         <ul class="list-disc ml-5 text-gray-600 text-sm mb-2">
-          <li>Cascaded PID architecture</li>
-          <li>Inner-loop rate control</li>
-          <li>Simulation-based validation</li>
+          <li>Airframe and propulsion layout</li>
+          <li>Control tuning from simulation to flight</li>
+          <li>Flight test planning and validation</li>
         </ul>
-        <a href="/projects/fixed-wing.html" class="project-link">
+        <a href="/projects/vtol-airframe.html" class="project-link">
           View project →
         </a>
       </div>
@@ -84,18 +82,17 @@
       <!-- PROJECT 2 -->
       <div>
         <h2 class="project-title">
-          VTOL Airframe Design & Analysis
+          mavctl-python
         </h2>
         <p class="project-description">
-          Conceptual and preliminary airframe design for a small VTOL UAV,
-          including airfoil selection, sizing, and structural considerations.
+          Open-source Python library integrating PyMAVLink for autonomous drone navigation; Navigator API and advanced maneuvers.
         </p>
         <ul class="list-disc ml-5 text-gray-600 text-sm mb-2">
-          <li>Airfoil trade studies</li>
-          <li>Performance constraints</li>
-          <li>Design iteration under mass limits</li>
+          <li>PyMAVLink &amp; MAVLink</li>
+          <li>Navigator-centric navigation API</li>
+          <li>UAARG / Shepard ecosystem</li>
         </ul>
-        <a href="/projects/vtol-airframe.html" class="project-link">
+        <a href="/projects/mavctl-python.html" class="project-link">
           View project →
         </a>
       </div>
@@ -103,18 +100,17 @@
       <!-- PROJECT 3 -->
       <div>
         <h2 class="project-title">
-          Embedded Autopilot & ESP32 Systems
+          Flight Controller – Fixed-Wing Pitch SITL
         </h2>
         <p class="project-description">
-          Embedded C++ development on ESP32 platforms, including real-time
-          communication, peripheral integration, and system-level debugging.
+          Cascaded pitch control (rate + angle) for fixed-wing with custom C++ SITL; ongoing project.
         </p>
         <ul class="list-disc ml-5 text-gray-600 text-sm mb-2">
-          <li>ESP-IDF & C++</li>
-          <li>Real-time constraints</li>
-          <li>Hardware–software integration</li>
+          <li>C++ SITL at 500 Hz</li>
+          <li>PI rate loop, P angle loop</li>
+          <li>Step/ramp/sinusoidal validation</li>
         </ul>
-        <a href="/projects/embedded-autopilot.html" class="project-link">
+        <a href="/projects/flight-controller.html" class="project-link">
           View project →
         </a>
       </div>
@@ -122,18 +118,17 @@
       <!-- PROJECT 4 -->
       <div>
         <h2 class="project-title">
-          Lidar-Based Perception & Simulation
+          FEA – Bicycle Crank Analysis
         </h2>
         <p class="project-description">
-          Simulation and integration of 2D lidar sensors in Gazebo for robotic
-          perception and navigation experiments.
+          Introduction to finite element analysis in Ansys: static structural study of a bicycle crank arm and a weight-reduction design iteration.
         </p>
         <ul class="list-disc ml-5 text-gray-600 text-sm mb-2">
-          <li>Gazebo simulation</li>
-          <li>Sensor modeling</li>
-          <li>Data visualization & debugging</li>
+          <li>Ansys Mechanical &amp; SolidWorks</li>
+          <li>Stress concentration and load direction</li>
+          <li>Mesh refinement and design iteration</li>
         </ul>
-        <a href="/projects/lidar-perception.html" class="project-link">
+        <a href="/projects/fea-bicycle-crank.html" class="project-link">
           View project →
         </a>
       </div>
