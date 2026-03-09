@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flight Controller – Fixed-Wing Pitch SITL | Fawwaz Hameed</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#2563eb',
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body class="bg-white text-gray-900">
+
+  <!-- NAVBAR -->
+  <nav class="max-w-5xl mx-auto px-4 py-6 flex justify-between items-center">
+    <a href="/" class="font-semibold text-lg">
+      Fawwaz Hameed
+    </a>
+    <div class="space-x-6 text-sm">
+      <a href="/projects.html" class="nav-link font-medium">Projects</a>
+      <a href="/resume.html" class="nav-link">Resume</a>
+      <a href="/about.html" class="nav-link">About</a>
+      <a href="https://github.com/HameedFawwaz" target="_blank" class="nav-link">
+        GitHub
+      </a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-3xl mx-auto px-4 py-20">
+
+    <!-- HEADER -->
+    <section class="mb-10">
+      <p class="text-sm text-gray-500 mb-2">
+        Project • Flight Controls • SITL • Mar 8, 2025
+      </p>
+      <h1 class="text-3xl font-semibold mb-4">
+        Flight Controller – Fixed-Wing Pitch Control with SITL
+      </h1>
+
+      <p class="text-gray-700 text-lg">
+        A C++ project that implements and validates a cascaded pitch control system for a fixed-wing aircraft using a custom
+        <strong>Software-In-The-Loop (SITL)</strong> simulation. The controller uses an inner pitch-rate loop and an outer pitch-angle loop,
+        with a first-order pitch dynamics model, actuator limits, anti-windup, and multiple command profiles. The work is
+        <strong>ongoing</strong>—I plan to extend the project further as I continue learning and applying flight control design.
+      </p>
+    </section>
+
+    <!-- META -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 text-sm text-gray-700">
+      <div>
+        <h2 class="font-semibold mb-1">Context</h2>
+        <p>Personal • UAARG-inspired</p>
+      </div>
+      <div>
+        <h2 class="font-semibold mb-1">Tech</h2>
+        <p>C++, CMake, SITL</p>
+      </div>
+      <div>
+        <h2 class="font-semibold mb-1">Status</h2>
+        <p>Ongoing</p>
+      </div>
+    </section>
+
+    <!-- BODY -->
+    <section class="space-y-10 text-gray-800 leading-relaxed">
+
+      <!-- Motivation -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          1. Motivation
+        </h2>
+        <p>
+          I built this project to deepen my understanding of aircraft control systems so I can apply it to tuning vehicles in ArduPilot with the University of Alberta Aerial Robotics Group (UAARG). It also gave me hands-on experience with flight control design and with building a non-trivial C++ project from the ground up rather than reusing boilerplate.
+        </p>
+      </article>
+
+      <!-- Control architecture -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          2. Control Architecture
+        </h2>
+        <p>
+          The system uses a cascaded structure common in flight control:
+        </p>
+        <ul class="list-disc ml-5 text-gray-700 text-sm">
+          <li><strong>Outer loop</strong> — Regulates pitch angle (θ) and outputs a pitch-rate command (<em>q</em><sub>cmd</sub>).</li>
+          <li><strong>Inner loop</strong> — Regulates pitch rate (<em>q</em>) and outputs an elevator command.</li>
+        </ul>
+        <p>
+          The rate loop stabilizes fast rotational dynamics first; the angle loop then commands slower attitude changes. Managing rate is prioritized because it has a larger impact on stability than angle alone.
+        </p>
+        <figure class="mt-6 max-w-md mx-auto">
+          <img
+            src="/assets/images/FCPitchControllerSetup.png"
+            alt="High-level architecture of the pitch controller: outer angle loop and inner rate loop"
+            class="w-full rounded-lg border border-gray-200"
+          />
+          <figcaption class="mt-2 text-sm text-gray-600 text-center">
+            High-level architecture overview: pitch angle (outer) and pitch rate (inner) control loops.
+          </figcaption>
+        </figure>
+      </article>
+
+      <!-- Dynamics & controllers -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          3. Dynamics and Controllers
+        </h2>
+        <p>
+          Pitch dynamics are modeled with a first-order pitch-rate equation (q̇ = −(1/τ)<em>q</em> + <em>K</em>·δ<sub>e</sub>) and pitch angle from integrating <em>q</em>. The inner loop is a <strong>PI</strong> pitch-rate controller with integrator anti-windup and output saturation for actuator limits; the outer loop is a <strong>P</strong> pitch-angle controller that outputs <em>q</em><sub>cmd</sub>. The rate loop is tuned to be significantly faster than the angle loop.
+        </p>
+      </article>
+
+      <!-- SITL & validation -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          4. SITL Framework and Validation
+        </h2>
+        <p>
+          The SITL runs at a fixed timestep (500 Hz) with a deterministic loop, modular plant and controller interfaces, and CSV logging for analysis. It supports step, ramp, and sinusoidal commands plus random noise to test transient response, tracking, and disturbance rejection. Validation includes step response, saturation behavior, and disturbance injection, with metrics like rise time, overshoot, and steady-state error.
+        </p>
+        <figure class="mt-6 max-w-md mx-auto">
+          <img
+            src="/assets/images/ValidationPlotFC.png"
+            alt="Validation plot: step and ramp inputs with Gaussian noise; measured angle tracking commanded angle"
+            class="w-full rounded-lg border border-gray-200"
+          />
+          <figcaption class="mt-2 text-sm text-gray-600 text-center">
+            Validation: step and ramp inputs with Gaussian noise. Measured angle tracks commanded angle; slight under-reaction to the step is intentional for realistic behavior.
+          </figcaption>
+        </figure>
+      </article>
+
+      <!-- Repo & ongoing -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          5. Repository and Next Steps
+        </h2>
+        <p>
+          The repo is organized with <code class="bg-gray-100 px-1 rounded">src/control/</code> for the pitch rate and angle controllers, <code class="bg-gray-100 px-1 rounded">sim/</code> for the SITL main, plant, and input profiles, and <code class="bg-gray-100 px-1 rounded">include/</code> for headers. Build with CMake (mkdir build, cmake .., make). I plan to keep extending this project—e.g. richer dynamics, more axes, or different control structures—as I continue working on flight controls.
+        </p>
+        <p>
+          <a href="https://github.com/HameedFawwaz/flight-controller" target="_blank" rel="noopener" class="text-accent hover:underline">flight-controller on GitHub</a>
+        </p>
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t mt-20">
+    <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-gray-500">
+      © 2026 Fawwaz Hameed
+    </div>
+  </footer>
+
+</body>
+</html>

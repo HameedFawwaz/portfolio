@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FEA – Bicycle Crank Analysis | Fawwaz Hameed</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#2563eb',
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body class="bg-white text-gray-900">
+
+  <!-- NAVBAR -->
+  <nav class="max-w-5xl mx-auto px-4 py-6 flex justify-between items-center">
+    <a href="/" class="font-semibold text-lg">
+      Fawwaz Hameed
+    </a>
+    <div class="space-x-6 text-sm">
+      <a href="/projects.html" class="nav-link font-medium">Projects</a>
+      <a href="/resume.html" class="nav-link">Resume</a>
+      <a href="/about.html" class="nav-link">About</a>
+      <a href="https://github.com/HameedFawwaz" target="_blank" class="nav-link">
+        GitHub
+      </a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-3xl mx-auto px-4 py-20">
+
+    <!-- HEADER -->
+    <section class="mb-10">
+      <p class="text-sm text-gray-500 mb-2">
+        Project • Finite Element Analysis • Ansys • Dec 24, 2024
+      </p>
+      <h1 class="text-3xl font-semibold mb-4">
+        An Initial Look at Finite Element Analysis
+      </h1>
+
+      <p class="text-gray-700 text-lg">
+        Over the winter break I decided to begin learning Finite Element Analysis using Ansys, after being recommended to learn it by colleagues on the Airframe Team at UAARG (University of Alberta Aerial Robotics Group). My first dive into Ansys Mechanical, after completing a basic tutorial, was with a bicycle crank arm that I had designed in SolidWorks. The goal was to find where the highest stress concentrations occur under extreme loading at various extension positions expected while riding.
+      </p>
+    </section>
+
+    <!-- META -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 text-sm text-gray-700">
+      <div>
+        <h2 class="font-semibold mb-1">Context</h2>
+        <p>Self-directed learning • FEA Analysis</p>
+      </div>
+      <div>
+        <h2 class="font-semibold mb-1">Tools</h2>
+        <p>Ansys Mechanical, SolidWorks</p>
+      </div>
+      <div>
+        <h2 class="font-semibold mb-1">Focus</h2>
+        <p>Static structural FEA, mesh refinement</p>
+      </div>
+    </section>
+
+    <!-- BODY -->
+    <section class="space-y-10 text-gray-800 leading-relaxed">
+
+      <!-- Setup -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          1. Model and Loading
+        </h2>
+        <p>
+          The part was a bicycle crank arm (reference geometry similar to commercial mountain bike cranks). I chose it to investigate stress concentrations under extreme loading at different extension positions. “Extreme loading” was taken as roughly <strong>3000 N</strong> static: either acting vertically downwards (negative <em>z</em>) or in the positive <em>x</em> direction (to the right). The load was applied as a bearing load on the smaller hole (pedal location). The material was <strong>Aluminum 6061</strong>, for its low cost, ease of machining, and common use in bicycle components.
+        </p>
+      </article>
+
+      <!-- Baseline results -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          2. Baseline Analysis Results
+        </h2>
+        <p>
+          In Ansys Mechanical I determined the stress concentration distribution, peak stress, and deformation. From the equivalent stress results:
+        </p>
+        <ul class="list-disc ml-5 text-gray-700 text-sm">
+          <li>With 3000 N acting vertically downwards, the stress field and peak values were relatively moderate.</li>
+          <li>With 3000 N acting to the right, stress was much higher.</li>
+        </ul>
+        <p>
+          Because loading the crank to the right produced the more critical case, I used that loading direction for further design iterations to simplify the analysis.
+        </p>
+        <figure class="mt-6 max-w-md mx-auto">
+          <img
+            src="/assets/images/3000NDown.png"
+            alt="Equivalent stress with 3000 N load vertically downwards"
+            class="w-full rounded-lg border border-gray-200"
+          />
+          <figcaption class="mt-2 text-sm text-gray-600 text-center">
+            Equivalent stress distribution with 3000 N acting vertically downwards.
+          </figcaption>
+        </figure>
+        <figure class="mt-6 max-w-md mx-auto">
+          <img
+            src="/assets/images/3000NRight.png"
+            alt="Equivalent stress with 3000 N load to the right"
+            class="w-full rounded-lg border border-gray-200"
+          />
+          <figcaption class="mt-2 text-sm text-gray-600 text-center">
+            Equivalent stress distribution with 3000 N acting to the right (higher stress).
+          </figcaption>
+        </figure>
+      </article>
+
+      <!-- Second design -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          3. Second Design Iteration – Weight Reduction
+        </h2>
+        <p>
+          A goal of this project was to explore designing a crank that reduces weight while keeping sufficient structural integrity. For learning and curiosity I analyzed a second design with additional material removed (e.g. weight-reduction slots). This iteration saved roughly <strong>10% weight</strong> and served mainly to see where new stress concentrations appear.
+        </p>
+        <p>
+          Under the same 3000 N load to the right, the peak stress in the new design <strong>almost doubled</strong>. The peak was on the outside of the crank, in line with the top corner of the middle weight-reduction slot on both sides. A logical next step would be to vary the width of the crank—wider around the top ends of the slot and slimmer in low-stress regions—but I did not implement that here so that I could focus on learning how to interpret stress distributions and make informed design choices. Additional iterations were run but are omitted for brevity.
+        </p>
+        <figure class="mt-6 max-w-md mx-auto">
+          <img
+            src="/assets/images/3000NRightOptimized.png"
+            alt="Equivalent stress for weight-reduced design with 3000 N to the right"
+            class="w-full rounded-lg border border-gray-200"
+          />
+          <figcaption class="mt-2 text-sm text-gray-600 text-center">
+            Equivalent stress for the weight-reduced design with 3000 N acting to the right.
+          </figcaption>
+        </figure>
+      </article>
+
+      <!-- Learning and meshing -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          4. Meshing and Takeaways
+        </h2>
+        <p>
+          Although the analysis was fairly rudimentary, it gave a solid basis for running static structural FEA in Ansys. Beyond that, the project was useful for learning how to build proper meshes. In many analyses—FEA, CFD, heat flow, and others—a good mesh is essential. Here I practiced refining the mesh so that elements behave as continuous where needed; if the body is discontinuous, results can be skewed.
+        </p>
+        <p>
+          Overall, this first FEA project supplied enough understanding to use Ansys Static Structural for basic studies and to start linking stress results back to design changes, with room to add more iterations and refinements in the future.
+        </p>
+      </article>
+
+      <!-- Original post link -->
+      <article class="pt-4 border-t border-gray-200">
+        <p class="text-sm text-gray-600">
+          This page is adapted from a portfolio post originally published December 24, 2024:
+          <a href="https://fawwazhameed.wordpress.com/2024/12/24/an-initial-look-at-finite-element-analysis/" target="_blank" rel="noopener" class="text-accent hover:underline">An Initial Look at Finite Element Analysis (WordPress)</a>.
+        </p>
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t mt-20">
+    <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-gray-500">
+      © 2026 Fawwaz Hameed
+    </div>
+  </footer>
+
+</body>
+</html>

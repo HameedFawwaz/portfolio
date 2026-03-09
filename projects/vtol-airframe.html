@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stallion VTOL Drone | Fawwaz Hameed</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#2563eb',
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body class="bg-white text-gray-900">
+
+  <!-- NAVBAR -->
+  <nav class="max-w-5xl mx-auto px-4 py-6 flex justify-between items-center">
+    <a href="/" class="font-semibold text-lg">
+      Fawwaz Hameed
+    </a>
+    <div class="space-x-6 text-sm">
+      <a href="/projects.html" class="nav-link font-medium">Projects</a>
+      <a href="/resume.html" class="nav-link">Resume</a>
+      <a href="/about.html" class="nav-link">About</a>
+      <a href="https://github.com/HameedFawwaz" target="_blank" class="nav-link">
+        GitHub
+      </a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-3xl mx-auto px-4 py-20">
+
+    <!-- HEADER -->
+    <section class="mb-10">
+      <p class="text-sm text-gray-500 mb-2">
+        Project • DIY 3D-Printed VTOL • Stallion • Mar 8, 2025
+      </p>
+      <h1 class="text-3xl font-semibold mb-4">
+        Stallion VTOL Drone – Assembling, Configuring, and Tuning a DIY Platform
+      </h1>
+
+      <!-- VIDEO -->
+      <div class="mb-6 max-w-md mx-auto">
+        <video
+          src="/assets/video/Stallion.mp4"
+          controls
+          class="w-full rounded-lg border border-gray-200"
+        >
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <p class="text-gray-700 text-lg">
+        Stallion is a 3D-printed VTOL drone built from a commercial DIY kit. This project is done with the University of Alberta Aerial Robotics Group (UAARG)
+        and serves as an affordable, and quick way to learn about how to set up and fly a transition aircraft. UAARG is currently working ond developing
+        a new transition aircraft (Quadrant) which is also a project that I am actively contributing to. I helped assemble the airframe,
+        configured the electro-mechanical system, and tuned Stallion so that was stable in vertical flight.
+        Work on this platform is ongoing.
+      </p>
+    </section>
+
+    <!-- META -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 text-sm text-gray-700">
+      <div>
+        <h2 class="font-semibold mb-1">Role</h2>
+        <p>Assembly, configuration, and flight tuning</p>
+      </div>
+      <div>
+        <h2 class="font-semibold mb-1">Tools</h2>
+        <p>Pixhawk, ArduPilot, Mission Planner</p>
+      </div>
+      <div>
+        <h2 class="font-semibold mb-1">Focus</h2>
+        <p>Practical VTOL setup and stable hover</p>
+      </div>
+    </section>
+
+    <!-- BODY -->
+    <section class="space-y-10 text-gray-800 leading-relaxed">
+
+      <!-- Overview -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          1. Project Overview
+        </h2>
+        <p>
+          Stallion is based on a commercially available 3D-printed VTOL drone kit.
+          You purchase the STL files, print the parts, and then source and assemble
+          the hardware yourself.
+        </p>
+        <p>
+          My work on this platform focuses on everything that happens once the printed
+          parts and components are on the bench: mechanical assembly, wiring and
+          electro-mechanical integration, and tuning the control systems so that the
+          vehicle is stable and predictable in vertical flight. The project is still
+          ongoing as I continue to improve the setup and explore forward-flight behavior.
+        </p>
+      </article>
+
+      <!-- Airframe -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          2. Assembly &amp; Electro-Mechanical Setup
+        </h2>
+        <p>
+          The airframe geometry and printed parts come directly from the kit, but there is
+          significant work required to turn a pile of prints and components into a
+          flyable vehicle. My contributions included:
+        </p>
+        <ul class="list-disc ml-5 text-gray-700 text-sm">
+          <li>Assembling the 3D-printed structure and mounting motors, servos, and control surfaces.</li>
+          <li>Routing and securing wiring for power, signal, and sensors to keep the layout serviceable.</li>
+          <li>Configuring the power system, receivers, and flight controller connections.</li>
+        </ul>
+        <p>
+          A lot of the practical learning happened here: understanding clearances,
+          how hardware choices affect maintainability, and how small changes in
+          layout can show up later when tuning.
+        </p>
+      </article>
+
+      <!-- Controls & Tuning -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          3. Flight Controller Configuration &amp; Tuning
+        </h2>
+        <p>
+          After the hardware was in place, the next step was to configure and tune the
+          flight controller so that Stallion could safely hover. This included:
+        </p>
+        <ul class="list-disc ml-5 text-gray-700 text-sm">
+          <li>Ensuring that the Pixhawk and other sensors were mounted correclty to ensure accurate sensor data</li>
+          <li>Performing initial checks: motor directions, control surface directions, and failsafes.</li>
+          <li>Adjusting PID controller gains in a methodical, and reasonable manner utilizing attitude data.</li>
+        </ul>
+        <p>
+          The tuning process was deliberately conservative: verify one behavior at a time,
+          log the results, and only then move to the next step. The immediate goal for
+          this phase was not aggressive performance, but a VTOL that feels predictable
+          on the sticks and holds a steady attitude. So far, pitch and roll are very stable. 
+        </p>
+      </article>
+
+      <!-- Simulation -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          4. Early Flight Tests
+        </h2>
+        <p>
+            During the early test flights, pitch and roll PID were tuned to a stable level fairly easily, requiring minimal PID adjustment to achieve stable control. 
+            The main issue I ran into at the start was with tuning the yaw controller. Given that Stallion is a tilt-rotor tricopter, yaw control is dictated by tilting of the motors.
+            This means that yaw controller tuning is much more challenging than tuning pitch and roll given that it is determined by the angle of a servo, and not by the rotation of a motor.
+            In a traditional quadcopter setup, the yaw controller is mostly left untouched in the tuning process as yaw is fairly stable in those circumstances. However in the case of a tilt rotor tricopter,
+            yaw tuning ends up being quite the task. The Yaw Controller runs off of PID but with the addition of a feedforward gain which is implemented due to the fact that the angle of the tilt servo is a known quantity which can be fed forward. 
+        </p>
+
+        <ul class="list-disc ml-5 text-gray-700 text-sm">
+          <li>Brief liftoffs to check for gross instabilities or configuration errors.</li>
+          <li>Feedforward tuning on the Yaw Controller along with PID tuning.</li>
+          <li>Logging flights and using the data to refine gains and parameters.</li>
+        </ul>
+        <p>
+          These tests confirmed that Stallion could achieve a stable vertical flight
+          regime and gave a clear path for future work on transitions and forward flight. At the moment there is still some more work that needs to be done on the yaw controller to ensure more stable vertical flight.
+        </p>
+
+        <figure class="mt-6 max-w-md mx-auto">
+          <img
+            src="/assets/images/YawOscillationStallion.png"
+            alt="Yaw controller oscillation plot"
+            class="w-full rounded-lg border border-gray-200"
+          />
+          <figcaption class="mt-2 text-sm text-gray-600 text-center">
+            Yaw Controller Showing Oscillations due to P gain being too large. Red is desired Yaw Angle, Green is Actual Yaw Angle. This plot was taken from one of the early flights during yaw controller tuning.
+          </figcaption>
+        </figure>
+      </article>
+
+      <!-- Flight Testing -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          5. Current Status &amp; Next Steps
+        </h2>
+        <p>
+          As of now, Stallion is stable in vertical flight and serves as a hands-on
+          platform for learning more about VTOL configuration and tuning.
+          The project is intentionally open-ended: there is still work to be done on
+          improving the setup, exploring transitions, and experimenting with more
+          advanced control strategies.
+        </p>
+        <p>
+          Future iterations will likely focus on cleaner wiring, better documentation
+          of the configuration, and more systematic testing of forward-flight behavior.
+          The value of the project lies not just in the airframe itself, but in the
+          process of taking a DIY kit and pushing it toward reliable, repeatable flight. 
+      </article>
+
+      <!-- Takeaways -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          6. Key Takeaways
+        </h2>
+        <p>
+          Stallion has been a practical way to deepen my understanding of what it takes
+          to set up and tune a VTOL drone in the real world. Even though the geometry
+          comes from a kit, the hands-on work of assembly, configuration, and tuning
+          has direct carryover to future custom platforms.
+        </p>
+        <p>
+          It has also reinforced a mindset of incremental testing and respect for
+          the details: small configuration mistakes or loose wiring can easily show
+          up as "controls problems" unless the whole system is considered together.
+        </p>
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t mt-20">
+    <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-gray-500">
+      © 2026 Fawwaz Hameed
+    </div>
+  </footer>
+
+</body>
+</html>
+

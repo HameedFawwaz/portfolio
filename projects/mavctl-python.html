@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>mavctl-python | Fawwaz Hameed</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#2563eb',
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body class="bg-white text-gray-900">
+
+  <!-- NAVBAR -->
+  <nav class="max-w-5xl mx-auto px-4 py-6 flex justify-between items-center">
+    <a href="/" class="font-semibold text-lg">
+      Fawwaz Hameed
+    </a>
+    <div class="space-x-6 text-sm">
+      <a href="/projects.html" class="nav-link font-medium">Projects</a>
+      <a href="/resume.html" class="nav-link">Resume</a>
+      <a href="/about.html" class="nav-link">About</a>
+      <a href="https://github.com/HameedFawwaz" target="_blank" class="nav-link">
+        GitHub
+      </a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-3xl mx-auto px-4 py-20">
+
+    <!-- HEADER -->
+    <section class="mb-10">
+      <p class="text-sm text-gray-500 mb-2">
+        Project • Open-Source Library • UAARG • Mar 8, 2025
+      </p>
+      <h1 class="text-3xl font-semibold mb-4">
+        mavctl-python – PyMAVLink-Based Autonomous Drone Control
+      </h1>
+
+      <p class="text-gray-700 text-lg">
+        <a href="https://github.com/uaarg/mavctl-python" target="_blank" rel="noopener" class="text-accent hover:underline">mavctl-python</a>
+        is an open-source Python library from the University of Alberta Aerial Robotics Group (UAARG) that integrates
+        <a href="https://mavlink.io/" target="_blank" rel="noopener" class="text-accent hover:underline">MAVLink</a>
+        via PyMAVLink for autonomous drone navigation. It provides a clean, structured API for commanding and maneuvering
+        MAVLink-compatible vehicles (e.g. drones running ArduPilot or PX4) from Python, and is designed as a modern
+        revamp and eventual replacement for DroneKit in UAARG’s software stack.
+      </p>
+    </section>
+
+    <!-- META -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 text-sm text-gray-700">
+      <div>
+        <h2 class="font-semibold mb-1">Context</h2>
+        <p>UAARG • Open-source library</p>
+      </div>
+      <div>
+        <h2 class="font-semibold mb-1">Tech</h2>
+        <p>Python, PyMAVLink, MAVLink</p>
+      </div>
+      <div>
+        <h2 class="font-semibold mb-1">Focus</h2>
+        <p>Autonomous navigation API for drones</p>
+      </div>
+    </section>
+
+    <!-- BODY -->
+    <section class="space-y-10 text-gray-800 leading-relaxed">
+
+      <!-- Overview -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          1. What the Repo Does
+        </h2>
+        <p>
+          mavctl-python sits between your Python application and the drone’s flight stack. You establish a MAVLink
+          connection (e.g. over serial or UDP), get a PyMAVLink object, and pass it into mavctl’s <strong>Navigator</strong>
+          class. The Navigator exposes methods for high-level navigation actions—for example, “move the drone 1 m North”
+          or “go to this position”—so that mission logic can stay at the behavior level instead of raw MAVLink messages.
+        </p>
+        <p>
+          The library is intentionally structured so that basic moves live in the Navigator, while more complex
+          maneuvers are implemented in separate modules. Those advanced maneuvers are not separate classes; they are
+          functions or callables that take a Navigator instance as an argument. That keeps the core simple and makes
+          it easy to add new behaviors without bloating the Navigator API.
+        </p>
+      </article>
+
+      <!-- Architecture -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          2. Architecture &amp; Conventions
+        </h2>
+        <p>
+          The intended flow is:
+        </p>
+        <ul class="list-disc ml-5 text-gray-700 text-sm">
+          <li>Create a MAVLink connection and obtain a PyMAVLink object.</li>
+          <li>Instantiate the <strong>Navigator</strong> with that object.</li>
+          <li>Use Navigator methods for standard navigation (e.g. position hold, simple moves).</li>
+          <li>For advanced maneuvers, pass the Navigator into dedicated functions in other files (e.g. <code class="bg-gray-100 px-1 rounded">advanced.py</code>).</li>
+        </ul>
+        <p>
+          Contributors are asked to follow this structure so that the codebase stays consistent and navigator logic
+          remains in one place while mission-specific or experimental behaviors live in their own modules.
+        </p>
+      </article>
+
+      <!-- Ecosystem -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          3. Relation to DroneKit &amp; Shepard
+        </h2>
+        <p>
+          The project draws inspiration from <a href="https://github.com/dronekit/dronekit-python" target="_blank" rel="noopener" class="text-accent hover:underline">DroneKit</a>,
+          reimplementing and improving on the patterns that work well there, with the long-term goal of exceeding
+          DroneKit’s functionality for UAARG’s use cases. Familiarity with MAVLink is recommended; the repo also
+          points to <a href="https://github.com/uaarg/shepard" target="_blank" rel="noopener" class="text-accent hover:underline">Shepard</a>
+          (UAARG’s autopilot software) for reference on how navigation functions and flight-test scripts are
+          organized, so that mavctl-python and Shepard can work together in the same ecosystem.
+        </p>
+      </article>
+
+      <!-- Takeaways -->
+      <article class="space-y-4">
+        <h2 class="text-xl font-semibold">
+          4. Summary
+        </h2>
+        <p>
+          mavctl-python is a focused, open-source library for autonomous drone control via MAVLink. It provides a
+          Navigator-centric API for basic and advanced maneuvers, encourages a clear separation between core
+          navigation and mission-specific logic, and fits into UAARG’s broader toolchain alongside Shepard and
+          MAVLink-based flight stacks.
+        </p>
+        <p>
+          For code, issues, and pull requests, see the
+          <a href="https://github.com/uaarg/mavctl-python" target="_blank" rel="noopener" class="text-accent hover:underline">mavctl-python repository</a>.
+        </p>
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t mt-20">
+    <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-gray-500">
+      © 2026 Fawwaz Hameed
+    </div>
+  </footer>
+
+</body>
+</html>
